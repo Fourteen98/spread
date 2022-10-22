@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  subject {Like.new(author_id: 1, post_id: 1)}
+  subject { Like.new(author_id: 1, post_id: 1) }
 
   before { subject.save }
 

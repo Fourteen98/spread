@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
       subject.name = nil
       expect(subject).to_not be_valid
     end
-  
+
     it 'name should be empty' do
       subject.name = ''
       expect(subject).to_not be_valid
@@ -30,7 +30,8 @@ RSpec.describe User, type: :model do
   context 'recent_posts' do
     before(:each) do
       3.times do |i|
-        Post.new(title: "Post #{i}", text: "Post #{i} text", comments_counter: 0, likes_counter: 0, author_id: subject.id)
+        Post.new(title: "Post #{i}", text: "Post #{i} text", comments_counter: 0, likes_counter: 0,
+                 author_id: subject.id)
       end
     end
     it 'should return the 3 most recent posts' do
