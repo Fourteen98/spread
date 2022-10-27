@@ -16,26 +16,26 @@ RSpec.describe 'Users', type: :request do
     end
     it 'the view body is correct (index)' do
       get('/users')
-      expect(response.body).to include('<div class="main">')
+      expect(response.body).to include('<h1>This is for all user</h1>')
     end
   end
 
   context 'the show method' do
     it 'returns http success on a single user' do
-      get '/users/1'
+      get '/users/368'
       expect(response).to have_http_status(:success)
     end
     it 'return rendered show page' do
-      get '/users/1'
+      get '/users/368'
       expect(assigns(:user)).to render_template('show')
     end
     it ' shows a single user' do
-      get user_path(1)
-      expect(assigns(:user)).to eq(User.find(1))
+      get user_path(368)
+      expect(assigns(:user)).to eq(User.find(368))
     end
     it 'the view body is correct (show)' do
-      get('/users/1')
-      expect(response.body).to include('<div class="main">')
+      get('/users/368')
+      expect(response.body).to include('<h1>This is for a single user</h1>')
     end
   end
 end
