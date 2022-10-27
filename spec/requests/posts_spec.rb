@@ -6,7 +6,7 @@ RSpec.describe 'Posts', type: :request do
       get '/'
       expect(response).to have_http_status(:success)
     end
-    it "return rendered index page" do
+    it 'return rendered index page' do
       get '/users/1/posts'
       expect(assigns(:posts)).to render_template('index')
     end
@@ -25,7 +25,7 @@ RSpec.describe 'Posts', type: :request do
       get '/users/1/posts/2'
       expect(response).to have_http_status(:success)
     end
-    it "return rendered show page" do
+    it 'return rendered show page' do
       get '/users/1/posts/2'
       expect(assigns(:post)).to render_template('show')
     end
@@ -35,7 +35,7 @@ RSpec.describe 'Posts', type: :request do
     end
     it 'the view body is correct (show)' do
       get('/users/1/posts/2')
-      expect(response.body).to include('<h1>Posts#show</h1>')
+      expect(response.body).to include('<h1>spesific user post</h1>')
     end
   end
 end
