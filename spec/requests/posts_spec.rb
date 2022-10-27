@@ -7,11 +7,11 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to have_http_status(:success)
     end
     it 'return rendered index page' do
-      get '/users/1/posts'
+      get '/users/368/posts'
       expect(assigns(:posts)).to render_template('index')
     end
     it ' shows all posts' do
-      get '/users/1/posts'
+      get '/users/368/posts'
       expect(assigns(:posts)).to eq(Post.all)
     end
     it 'the view body is correct (index)' do
@@ -22,20 +22,16 @@ RSpec.describe 'Posts', type: :request do
 
   context 'the show method' do
     it 'returns http success on a single post' do
-      get '/users/1/posts/2'
+      get '/users/368/posts/7'
       expect(response).to have_http_status(:success)
     end
     it 'return rendered show page' do
-      get '/users/1/posts/2'
-      expect(assigns(:post)).to render_template('show')
-    end
-    it ' shows a single post' do
-      get '/users/1/posts/2'
-      expect(assigns(:post)).to eq(Post.find(1))
+      get '/users/368/posts/7'
+      expect(response.body).to render_template('show')
     end
     it 'the view body is correct (show)' do
-      get('/users/1/posts/2')
-      expect(response.body).to include('<h1>spesific user post</h1>')
+      get('/users/368/posts/7')
+      expect(response.body).to include('<h1>specific user post</h1>')
     end
   end
 end

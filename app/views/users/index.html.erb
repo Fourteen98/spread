@@ -1,16 +1,1 @@
-<div class="main">
-  <% @users.each do |user| %>
-    <div class="main--index">
-      <div class="user--img">
-        <img src="<%= user.photo %> alt="<%= user.name  %>">
-      </div>
-      <div class="user--content">
-        <h1><%= link_to user.name, user_path(user.id) %></h1>
-        <div>
-          <p><%= user.bio %></p>
-          <p>Number of posts: <%= user.post_counter %></p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<h1>This is for all user</h1>
