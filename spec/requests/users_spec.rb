@@ -6,7 +6,7 @@ RSpec.describe 'Users', type: :request do
       get '/'
       expect(response).to have_http_status(:success)
     end
-    it "return rendered index page" do
+    it 'return rendered index page' do
       get '/users'
       expect(assigns(:users)).to render_template('index')
     end
@@ -25,7 +25,7 @@ RSpec.describe 'Users', type: :request do
       get '/users/1'
       expect(response).to have_http_status(:success)
     end
-    it "return rendered show page" do
+    it 'return rendered show page' do
       get '/users/1'
       expect(assigns(:user)).to render_template('show')
     end
@@ -39,6 +39,3 @@ RSpec.describe 'Users', type: :request do
     end
   end
 end
-
-
-
