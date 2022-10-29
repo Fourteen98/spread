@@ -4,6 +4,12 @@ class PostsController < ApplicationController
     @posts = Post.where(author_id: @user.id).order(created_at: :desc)
   end
 
+  def show
+    @user = User.includes(:posts, posts: [:comments, { comments: [:author] }]).find(params[:user_id])
+    @post = Post.includes(:comments, comments:[:author]).find(params[:id])
+    @comments = Comment.where(post_id: @post.id).order(created_at: :desc)
+  end
+
   def new
     @post = Post.new
   end
@@ -24,9 +30,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
-  end
 
   private
   def post_params

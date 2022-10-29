@@ -10,6 +10,13 @@
     <div>
       <p><%= @post.text %></p>
     </div>
+    <div>
+      <%= form_with model: @like, url: user_post_likes_path(@user, @post)  do |form|%>
+        <div>
+          <%= form.submit 'like this post' %>
+        </div>
+      <%end %>
+    </div>
   </div>
   <div>
     <% @post.comments.each do |comment| %>
