@@ -1,1 +1,37 @@
-<h1>This is for a single user</h1>
+<div class="user-main">
+  <div class="user-info">
+    <div class="user-header">
+      <img src="<%=@user.photo%>" alt="<%= @user.id %>">
+      <div class="user-header-left">
+        <h1><%= @user.name %></h1>
+        <p>Number of post: <%= @user.post_counter || 0 %></p>
+      </div>
+    </div>
+    <div class="user-bio">
+      <p><%= @user.bio %></p>
+    </div>
+  </div>
+  <div class="card-for-post">
+    <% if @user.posts.empty? %>
+      <h1>This User Dose Not Have Any Posts</h1>
+    <%end%>
+    <% @user.posts.each do |post| %>
+      <div class="post-card">
+        <div>
+          <h2>Post #: <%= post.id %></h2>
+          <p>Title: <%= post.title %></p>
+          <p><h5>Bio</h5>
+          <%= post.text %>
+          </p>
+        </div>
+        <div class="comments-and-likes">
+          <p>Number of comments: <%= post.comments_counter %></p>
+          <p>Number of likes: <%= post.likes_counter %></p>
+        </div>
+      </div>
+    <% end %>
+    <div class="button-div"><button><%= link_to   "See All Post",user_posts_path(@user.id) %></a></button></div>
+  </div>
+
+
+</div>
