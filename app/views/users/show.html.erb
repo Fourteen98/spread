@@ -4,7 +4,7 @@
       <img src="<%=@user.photo%>" alt="<%= @user.id %>">
       <div class="user-header-left">
         <h1><%= @user.name %></h1>
-        <p>Number of post: <%= @user.post_counter %></p>
+        <p>Number of post: <%= @user.post_counter || 0 %></p>
       </div>
     </div>
     <div class="user-bio">
@@ -12,6 +12,9 @@
     </div>
   </div>
   <div class="card-for-post">
+    <% if @user.posts.empty? %>
+      <h1>This User Dose Not Have Any Posts</h1>
+    <%end%>
     <% @user.posts.each do |post| %>
       <div class="post-card">
         <div>
@@ -27,7 +30,7 @@
         </div>
       </div>
     <% end %>
-    <div class="button-div"><button><%=link_to See All Post, user_posts() %></a></button></div>
+    <div class="button-div"><button><%= link_to   "See All Post",user_posts_path(@user.id) %></a></button></div>
   </div>
 
 
