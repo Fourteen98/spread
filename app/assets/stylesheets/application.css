@@ -110,3 +110,25 @@
     justify-content: center;
     align-content: center;
 }
+
+/* post show */
+
+.post-show-main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+}
+
+.post-about-post {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+}
+
+
+.post-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid red;
+}
