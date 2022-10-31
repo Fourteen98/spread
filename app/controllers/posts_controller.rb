@@ -3,9 +3,9 @@ class PostsController < ApplicationController
     @user = User.includes(:posts, posts: [:comments, { comments: [:author] }]).find(params[:user_id])
     @posts = Post.where(author_id: @user.id).order(created_at: :desc)
   end
-
+  # Book.find :all, :include => [:author, {:comments => :user}]
   def show
-    @user = User.includes(:posts, posts: [:comments, { comments: [:author] }]).find(params[:user_id])
+    @user = User.includes(:posts, :comments, { comments: [:author] }).find(params[:user_id])
     @post = Post.includes(:comments, comments: [:author]).find(params[:id])
     @comments = Comment.where(post_id: @post.id).order(created_at: :desc)
   end
