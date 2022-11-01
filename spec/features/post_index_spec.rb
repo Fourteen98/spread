@@ -20,5 +20,8 @@ RSpec.describe 'Post index test', type: :feature do
     it "should show user\'s profile" do
         expect(page).to have_selector('img', 1)
     end
+    it "should show user\'s user name" do
+        expect(page).to have_content @user1.name
+    end
   end
 end
