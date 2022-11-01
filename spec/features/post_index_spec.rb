@@ -29,5 +29,9 @@ RSpec.describe 'Post index test', type: :feature do
     it "should show the post'\s title" do
         expect(page).to have_content post.title
     end
+    it "should show the post'\s body" do
+        expect(page).to have_content post.text
+    end
+    
   end
 end
