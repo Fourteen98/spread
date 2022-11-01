@@ -14,7 +14,11 @@ RSpec.describe 'Post index test', type: :feature do
             Comment.create(author_id: 1, post_id: 1, text: "Test comment #{comment + 1}")
             Like.create(author_id: 1, post_id: 1)
           end
-          visit('/users/1/posts')
+     visit('/users/1/posts')
+    end
+
+    it "should show user\'s profile" do
+        expect(page).to have_selector('img', 1)
     end
   end
 end
