@@ -18,7 +18,7 @@ RSpec.describe 'Post index test', type: :feature do
         expect(page).to have_content('Tom')
     end
     it "should show the number of posts the user has written." do
-        expect(page).to have_content(': 2')
+        expect(page).to have_content('Number of post: 1')
     end
     it "should show the post's title" do
         expect(page).to have_content @post1.title
