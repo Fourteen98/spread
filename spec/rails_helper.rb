@@ -31,6 +31,15 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+
+  config.before(:each, bullet: :skip) do
+    Bullet.enable = false
+  end
+
+  config.after(:each, bullet: :skip) do
+    Bullet.enable = true
+  end
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
