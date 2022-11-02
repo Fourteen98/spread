@@ -12,10 +12,10 @@
     </div>
   </div>
   <div class="card-for-post">
-    <% if @user.posts.empty? %>
+    <% if @posts.empty? %>
       <h1>This User Dose Not Have Any Posts</h1>
     <%end%>
-    <% @user.posts.each do |post| %>
+    <% @posts.each do |post| %>
       <div class="post-card">
         <div>
           <div>
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="post-comments">
-        <% if @user.posts.empty? %>
+        <% if post.recent_comments == 0 %>
           <h1>This post has comments</h1>
         <%end%>
         <% post.recent_comments.each do |comment| %>

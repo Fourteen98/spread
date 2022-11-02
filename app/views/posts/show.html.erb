@@ -2,6 +2,7 @@
   <div class="post-about-post">
     <div class="post-header">
       <h2>Post #<%= @post.id %> by <%= @post.author.name %></h2>
+      <h3>Title: <%= @post.title %></h3>
       <div>
         <span>Number of comments: <%= @post.comments_counter %></span>
         <span>Number of likes: <%= @post.likes_counter %></span>
