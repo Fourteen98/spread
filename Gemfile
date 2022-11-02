@@ -43,6 +43,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 # improve the performance and eliminates n+1 queries
+# rubocop:disable:next-line
 gem 'bullet', group: 'development'
 
 # Use Sass to process CSS
@@ -75,7 +76,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'bullet'
+  # gem 'bullet'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
