@@ -15,6 +15,9 @@
         <a href="#" class="hover:text-darkGrayishBlue">Our Community</a>
         <a href="#" class="hover:text-darkGrayishBlue">Reach Us</a>
       <% end %>
+      <% if controller_name != 'registrations' or controller_name != 'sessions' %>
+        <%= button_to "logout", destroy_user_session_path, method: :delete, class: 'hover:text-darkGrayishBlue'  %>
+    <%end %>
     </div>
   </div>
 </nav>
