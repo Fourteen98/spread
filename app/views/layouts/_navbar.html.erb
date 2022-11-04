@@ -11,10 +11,10 @@
       <% end %>
 
       <%- if  controller_name == 'registrations' %>
+        <%= link_to "Log in", new_session_path(resource_name), class: 'hover:text-darkGrayishBlue' %><br />
         <a href="#" class="hover:text-darkGrayishBlue">Our Community</a>
         <a href="#" class="hover:text-darkGrayishBlue">Reach Us</a>
       <% end %>
-
     </div>
   </div>
 </nav>
