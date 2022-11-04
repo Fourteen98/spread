@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%#= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="p-4">
+  <%= render partial: 'layouts/navbar' %>
+  <% if notice %> <p class="alert alert-success"><%= notice %></p> <% end %>
+  <% if alert %> <p class="alert alert-danger"><%= alert %></p> <% end %>
+
+  <%= yield %>
   </body>
 </html>

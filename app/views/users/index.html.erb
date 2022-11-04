@@ -1,16 +1,20 @@
-<div class="main">
-  <% @users.each do |user| %>
-    <div class="main--index">
-      <div class="user--img">
-        <img src="<%= user.photo %> alt="<%= user.name  %>">
-      </div>
-      <div class="user--content">
-        <h1><%= link_to user.name, user_path(user.id) %></h1>
-        <div>
-          <p><%= user.bio %></p>
-          <p>Number of posts: <%= user.post_counter %></p>
+<section class="p-12  w-full">
+  <div class="w-full">
+    <% @users.each do |user| %>
+      <div id="user-card" class="w-full flex gap-6">
+        <div class="w-1/4 border-2 rounded">
+          <%= image_tag user.photo, :alt => 'user-logo', class: 'w-full rounded-l' %>
+        </div>
+        <div class="flex w-full  justify-between border-2">
+          <div class="w-full">
+            <h1 class="text-6xl hover:text-darkGrayishBlue"><%= link_to user.name, user_path(user.id) %></h1>
+          </div>
+          <div class="flex  justify-end  align-baseline inline-block w-full" >
+            <p class=" ">Number of posts: <%= user.post_counter %></p>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+</section>
+
