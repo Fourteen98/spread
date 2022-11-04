@@ -41,7 +41,7 @@
                 <% if post.recent_comments.empty?%>
                   <h1 class="text-l text-brightRedLight w-1/4">This post has no comments</h1>
                 <%end%>
-                <% post.recent_comments.each do |comment| %>
+                <% post.recent_comments.includes([:author]).each do |comment| %>
                   <p><strong><%= comment.author.name %></strong> <%= comment.text %></p>
                 <%end %>
               </div>

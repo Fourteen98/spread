@@ -18,7 +18,7 @@
           <div class="">
             <%= form.text_field :text, placeholder: "comment here" %>
           </div>
-          <%= form.submit 'comment', class: 'border-2  bg-brightRedLight hover:text-darkGrayishBlue rounded' %>
+          <%= form.submit 'add comment', class: 'border-2  bg-brightRedLight hover:text-darkGrayishBlue rounded' %>
         <%end %>
       </div>
     </div>
@@ -27,7 +27,7 @@
         <p class="font-bold text-brightRedLight">No comments yet</p>
       <% end %>
       <div class="flex-col gap-2 flex w-full">
-        <% @post.comments.each do |comment| %>
+        <% @post.comments.includes([:author]).each do |comment| %>
           <p><strong><%= comment.author.name %> :</strong> <%= comment.text %> </p>
         <%end %>
       </div>
