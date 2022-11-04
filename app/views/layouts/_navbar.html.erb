@@ -1,0 +1,20 @@
+<nav class="relative h-16 p-2 border-3 border-opacity-30 ">
+  <div class="flex item-center justify-between">
+    <div class="pt-2 items-center">
+      <img src="https://uploads-ssl.webflow.com/5eeb8b29c06edc52af993b4c/5eeb8bab5f3ac998304cb15d_SPREAD_LOGO_HORIZ_RVB.svg" alt="Spread Logo" class="h-12 w-full">
+    </div>
+    <div class="hidden md:flex space-x-12 items-center text-xl">
+      <%- if  controller_name == 'sessions' %>
+        <%= link_to "Sign up", new_registration_path(resource_name), class: 'hover:text-darkGrayishBlue' %>
+        <a href="#" class="hover:text-darkGrayishBlue">Our Community</a>
+        <a href="#" class="hover:text-darkGrayishBlue">Reach Us</a>
+      <% end %>
+
+      <%- if  controller_name == 'registrations' %>
+        <a href="#" class="hover:text-darkGrayishBlue">Our Community</a>
+        <a href="#" class="hover:text-darkGrayishBlue">Reach Us</a>
+      <% end %>
+
+    </div>
+  </div>
+</nav>
