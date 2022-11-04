@@ -46,6 +46,12 @@
                 <%end %>
               </div>
             </div>
+
+            <div class="delete-post">
+              <% if can? :destroy, post %>
+              <%# <%= button_to "Delete", post , user_posts%> %>
+              <% end %>
+              </div> 
           </div>
         <% end %>
       </div>
