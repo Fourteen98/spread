@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def update_allowed_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :bio, :post_counter, :photo, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up,
+                                      keys: %i[name bio post_counter photo email password password_confirmation])
   end
 end

@@ -26,7 +26,7 @@
       <% if @post.comments.empty? %>
         <p class="font-bold text-brightRedLight">No comments yet</p>
       <% end %>
-      <div class="flex-col flex w-full">
+      <div class="flex-col gap-2 flex w-full">
         <% @post.comments.each do |comment| %>
           <p><strong><%= comment.author.name %> :</strong> <%= comment.text %> </p>
         <%end %>
