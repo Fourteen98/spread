@@ -1,5 +1,5 @@
 
-<section id='hero' class="p-12 w-full flex justify-center items-center boder">
+<section id='hero' class="p-12 w-full flex justify-center items-center border">
   <div class="container flex flex-col justify-center mx-auto items-center p-12 w-1/2 gap-8 border-2 rounded-md">
     <div>
       <h2 class='text-3xl font-bold underline text-brightRedLight'>Sign Up</h2>
@@ -8,12 +8,13 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'flex flex-col w-full gap-8'}) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-          <%= f.text_field :name, placeholder: 'your name', class: 'rounded w-full' %>
+        <%= f.text_field :name, placeholder: 'your name', class: 'rounded w-full' %>
 
-          <%= f.text_area :bio, placeholder: 'your bio', class: 'rounded w-full'%>
+        <%= f.text_area :bio, placeholder: 'your bio', class: 'rounded w-full'%>
 
-          <%= f.number_field :post_counter, value: 0, class: 'hidden' %>
+        <%= f.number_field :post_counter, value: 0, class: 'hidden' %>
 
+        <%= f.text_field :photo, placeholder: 'link to your photo', class: 'rounded w-full' %>
 
         <%= f.email_field :email, placeholder: "your email", autofocus: true, autocomplete: "email", class: 'rounded w-full'%>
 
