@@ -1,34 +1,36 @@
-<div class="post-show-main">
-  <div class="post-about-post">
-    <div class="post-header">
-      <h2>Post #<%= @post.id %> by <%= @post.author.name %></h2>
-      <h3>Title: <%= @post.title %></h3>
-      <div>
-        <span>Number of comments: <%= @post.comments_counter %></span>
-        <span>Number of likes: <%= @post.likes_counter %></span>
+<section class="p-12 w-full">
+  <div class="w-full flex flex-col gap-6">
+    <div class="w-full flex flex-col gap-2 border-2 p-8">
+      <h2 class="font-bold">Post #: <%= @post.id %></h2>
+      <p class="font-bold">Title: <span class="font-light"><%= @post.title %></span></p>
+      <p class="font-bold">Text: <span class="font-light"><%= @post.text %></span></p>
+      <div class="w-full flex gap-3 justify-end">
+        <p class="font-bold">Number of comments: <span class="font-light"><%= @post.comments_counter %></span></p>
+        <p class="font-bold">Number of likes: <span class="font-light"><%= @post.likes_counter %></span> </p>
+      </div>
+      <div class="w-full h-16 flex border-2 gap-4 items-center">
+        <%= form_with model: @like, url: user_post_likes_path(@user, @post) do |form|%>
+          <div>
+            <%= form.submit 'Like: 🔥' %>
+          </div>
+        <%end %>
+        <%= form_with model:  @comments, url: user_post_comments_path(@user, @post), html: {class: 'flex gap-2'} do |form|%>
+          <div class="">
+            <%= form.text_field :text, placeholder: "comment here" %>
+          </div>
+          <%= form.submit 'comment', class: 'border-2  bg-brightRedLight hover:text-darkGrayishBlue rounded' %>
+        <%end %>
       </div>
     </div>
-    <div>
-      <p><%= @post.text %></p>
-    </div>
-    <div>
-      <%= form_with model: @like, url: user_post_likes_path(@user, @post)  do |form|%>
-        <div>
-          <%= form.submit 'like this post' %>
-        </div>
-      <%end %>
-      <%= form_with model:  @comments, url: user_post_comments_path(@user, @post) do |form|%>
-        <div>
-          <%= form.text_field :text, placeholder: "comment" %>
-        </div>
-        <%= form.submit 'add comment' %>
+    <div class="w-full border-2 p-8">
+      <% if @post.comments.empty? %>
+        <p class="font-bold text-brightRedLight">No comments yet</p>
+      <% end %>
+      <div class="flex-col flex w-full">
+        <% @post.comments.each do |comment| %>
+          <p><strong><%= comment.author.name %> :</strong> <%= comment.text %> </p>
         <%end %>
+      </div>
     </div>
   </div>
-  <div>
-    <% @post.comments.each do |comment| %>
-      <p><strong><%= comment.author.name %> :</strong> <%= comment.text %> </p>
-    <%end %>
-  </div>
-</div>
-
+</section>
