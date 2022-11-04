@@ -1,37 +1,47 @@
-<div class="user-main">
-  <div class="user-info">
-    <div class="user-header">
-      <img src="<%=@user.photo%>" alt="<%= @user.id %>">
-      <div class="user-header-left">
-        <h1><%= @user.name %></h1>
-        <p>Number of post: <%= @user.post_counter || 0 %></p>
-      </div>
-    </div>
-    <div class="user-bio">
-      <p><%= @user.bio %></p>
-    </div>
-  </div>
-  <div class="card-for-post">
-    <% if @user.posts.empty? %>
-      <h1>This User Dose Not Have Any Posts</h1>
-    <%end%>
-    <% @user.posts.each do |post| %>
-      <div class="post-card">
-        <div>
-          <h2>Post #: <%= post.id %></h2>
-          <p>Title: <%= post.title %></p>
-          <p><h5>Bio</h5>
-          <%= post.text %>
-          </p>
+<section class="p-12  w-full">
+  <div class="w-full flex flex-col gap-12">
+      <div id="user-card" class="w-full flex flex-col gap-6">
+        <div class="w-full flex gap-6">
+          <div class="w-1/4 border-2 rounded">
+            <%= image_tag @user.photo, :alt => 'user-logo', class: 'w-full rounded-l' %>
+          </div>
+          <div class="flex w-full  justify-between border-2 p-4">
+            <div class="w-full">
+              <h1 class="text-6xl hover:text-darkGrayishBlue"> <%=@user.name %></h1>
+            </div>
+
+            <div class="flex  justify-end  align-baseline inline-block w-full" >
+              <p class=" ">Number of posts: <%= @user.post_counter %></p>
+            </div>
+          </div>
         </div>
-        <div class="comments-and-likes">
-          <p>Number of comments: <%= post.comments_counter %></p>
-          <p>Number of likes: <%= post.likes_counter %></p>
+        <div class="w-full border-2 p-12">
+          <p class="text-2xl font-bold">Bio:</p>
+         <p>
+           <%= @user.bio %>
+         </p>
         </div>
       </div>
-    <% end %>
-    <div class="button-div"><button><%= link_to   "See All Post",user_posts_path(@user.id) %></a></button></div>
+    <div class="w-full flex gap-6">
+      <% if @user.posts.empty? %>
+        <h1 class="text-3xl bg-brightRedLight ">This User Dose Not Have Any Posts</h1>
+      <%end%>
+      <div class="w-full flex flex-col gap-1">
+      <% @user.recent_posts.each do |post| %>
+        <div class="w-full flex flex-col gap-4 ">
+          <div class="w-full flex flex-col gap-2 border-2 p-8">
+            <h2 class="font-bold">Post #: <%= post.id %></h2>
+            <p class="font-bold">Title: <span class="font-light"><%= post.title %></span></p>
+            <p class="font-bold">Text: <span class="font-light"><%= post.text %></span></p>
+            <div class="w-full flex gap-3 justify-end">
+              <p class="font-bold">Number of comments: <span class="font-light"><%= post.comments_counter %></span></p>
+              <p class="font-bold">Number of likes: <span class="font-light"><%= post.likes_counter %></span> </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+    <div class="w-full flex justify-center items-center"><button class="w-1/4 border-2 p-2 bg-brightRedLight hover:text-darkGrayishBlue rounded"><%= link_to   "See All Post",user_posts_path(@user.id) %></a></button></div>
   </div>
-
-
-</div>
+</section>
