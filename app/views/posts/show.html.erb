@@ -29,14 +29,13 @@
       <div class="flex-col gap-2 flex w-full">
         <% @post.comments.includes([:author]).each do |comment| %>
           <p><strong><%= comment.author.name %> :</strong> <%= comment.text %> </p>
+          <div class="delete-comment">
+            <% if can? :destroy, comment %>
+              <%= button_to "Delete", comment, user_post_comment_path(current_user,@post.id,comment),
+                            method: :delete%>
+            <% end %>
         <%end %>
       </div>
-      <%# Needs editing %>
-      <div class="delete-comment">
-        <% if can? :destroy, comment %>
-          <%= button_to "Delete", comment, user_post_comment_path(current_user,@post.id,comment),
-        method: :delete%>
-      <% end %>
       </div>
     </div>
   </div>
