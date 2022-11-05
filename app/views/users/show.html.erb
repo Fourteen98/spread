@@ -38,6 +38,9 @@
               <p class="font-bold">Number of likes: <span class="font-light"><%= post.likes_counter %></span> </p>
             </div>
           </div>
+           <% if can? :destroy, post %>
+           <%= button_to "Delete Post", post_path(post.id), method: :delete %>
+          <% end %>
         </div>
       <% end %>
       </div>
