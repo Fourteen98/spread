@@ -31,9 +31,11 @@
           <p><strong><%= comment.author.name %> :</strong> <%= comment.text %> </p>
           <div class="delete-comment">
             <% if can? :destroy, comment %>
-              <%= button_to "Delete", comment, user_post_comment_path(current_user,@post.id,comment),
-                            method: :delete%>
+              <%= form_with model: Comment, class: 'destroy-form', url: user_post_comment_path(comment.author_id, comment.post_id, comment.id), method: :delete do |form| %>
+                <%= form.submit "Drop Comment", class: 'comment-destroy' %><br>
+              <% end %>
             <% end %>
+          </div>
         <%end %>
       </div>
       </div>

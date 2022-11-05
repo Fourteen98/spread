@@ -8,15 +8,16 @@ class CommentsController < ApplicationController
     redirect_to user_post_path(params[:user_id], params[:post_id]) if @comment.save!
   end
 
+  def destroy
+    @user = User.find(params[:user_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to user_posts_path(@user), notice: 'Comment Deleted!'
+  end
+
   private
 
   def comment_params
     params.require(:comment).permit(:text)
-  end
-
-  def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to root_path
   end
 end
