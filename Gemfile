@@ -53,6 +53,8 @@ gem 'bootsnap', require: false
 # use cancan
 gem 'cancancan'
 
+# use jwt
+gem 'jwt'
 # Use rubocop to lint code
 gem 'rubocop', '>= 1.0', '< 2.0'
 
