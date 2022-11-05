@@ -49,7 +49,7 @@
 
             <div class="delete-post">
               <% if can? :destroy, post %>
-              <%# <%= button_to "Delete", post , user_posts%> %>
+              <%= button_to "Delete Post", post_path(post.id), method: :delete %>
               <% end %>
               </div> 
           </div>
