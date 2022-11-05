@@ -22,9 +22,9 @@
          </p>
         </div>
       </div>
-    <div class="w-full flex gap-6">
+    <div class="w-full flex flex-col gap-6">
       <% if @user.posts.empty? %>
-        <h1 class="text-3xl bg-brightRedLight ">This User Dose Not Have Any Posts</h1>
+        <h1 class="text-3xl text-brightRedLight ">No post yet</h1>
       <%end%>
       <div class="w-full flex flex-col gap-1">
       <% @user.recent_posts.each do |post| %>
@@ -38,13 +38,12 @@
               <p class="font-bold">Number of likes: <span class="font-light"><%= post.likes_counter %></span> </p>
             </div>
           </div>
-           <% if can? :destroy, post %>
-           <%= button_to "Delete Post", post_path(post.id), method: :delete %>
-          <% end %>
         </div>
       <% end %>
       </div>
     </div>
+    <% if @user.posts.empty? != true %>
     <div class="w-full flex justify-center items-center"><button class="w-1/4 border-2 p-2 bg-brightRedLight hover:text-darkGrayishBlue rounded"><%= link_to   "See All Post",user_posts_path(@user.id) %></a></button></div>
+      <%end%>
   </div>
 </section>
