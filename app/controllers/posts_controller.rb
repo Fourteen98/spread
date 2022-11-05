@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
+
   def index
     @user = User.find(params[:user_id])
     @posts = Post.where(author_id: @user.id).order(created_at: :desc)
@@ -15,18 +18,23 @@ class PostsController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
     @post = Post.new(post_params)
     @post.author_id = current_user.id
     @post.comments_counter = 0
     @post.likes_counter = 0
 
-    pp params.inspect
-
     if @post.save!
-      puts ' i got here !!'
-      redirect_to user_posts_path(current_user.id)
+      redirect_to user_posts_path(current_user)
     else
-      render :new
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_back_or_to user_path(current_user), notice: 'Post was successfully deleted.' }
     end
   end
 
