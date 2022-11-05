@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: spread_production
-  username: spread
-  password: <%= ENV["SPREAD_DATABASE_PASSWORD"] %>
+  username: blog_app
+  password: <%= ENV["BLOG_APP_DATABASE_PASSWORD"] %>

@@ -21,10 +21,13 @@
           <%= @user.bio %>
         </p>
       </div>
+      <div>
+        <%= link_to "click here to add a post", new_user_post_path(@user), class: "text-2xl font-bold hover:text-darkGrayishBlue" %>
+      </div>
     </div>
-    <div class="w-full flex gap-6">
+    <div class="w-full flex-col flex gap-6">
       <% if @user.posts.empty? %>
-        <h1 class="text-3xl bg-brightRedLight ">This User Dose Not Have Any Posts</h1>
+        <h1 class="text-3xl text-brightRedLight ">No Post Yet</h1>
       <%end%>
       <div class="w-full flex flex-col gap-1">
         <% @user.recent_posts.each do |post| %>
@@ -45,11 +48,20 @@
                   <p><strong><%= comment.author.name %></strong> <%= comment.text %></p>
                 <%end %>
               </div>
+              <% if can? :destroy, post %>
+                <%= form_with model: post, class: 'w-full flex justify-start items-center', url: user_post_path(post.author_id, post.id), method: :delete do |form| %>
+                    <%= form.submit "Delete this post", class: 'w-fit -2 p-2 text-brightRedLight underline hover:text-brightRed cursor-pointer' %><br>
+                <% end %>
+              <% end %>
             </div>
           </div>
         <% end %>
       </div>
     </div>
-    <div class="w-full flex justify-center items-center"><button class="w-1/4 border-2 p-2 bg-brightRedLight hover:text-darkGrayishBlue rounded">Pagination</button></div>
+    <div>
+    </div>
+    <% if @user.posts.empty? != true %>
+      <div class="w-full flex justify-center items-center"><button class="w-1/4 border-2 p-2 bg-brightRedLight hover:bg-brightRedLight hover:text-darkGrayishBlue rounded">Pagination</button></div>
+    <%end%>
   </div>
 </section>
