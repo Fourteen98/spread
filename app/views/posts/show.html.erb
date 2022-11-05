@@ -34,8 +34,7 @@
       <%# Needs editing %>
       <div class="delete-comment">
         <% if can? :destroy, comment %>
-          <%= button_to "Delete", comment, user_post_comment_path(current_user,@post.id,comment),
-        method: :delete%>
+          <%= button_to "Delete", comment, user_post_comment_path(@post.author, @post, comment), method: :delete%>
       <% end %>
       </div>
     </div>
