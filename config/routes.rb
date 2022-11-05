@@ -7,4 +7,18 @@ Rails.application.routes.draw do
       resources :likes, only:  [:create]
     end
   end
+
+  # API routes
+  namespace :api do
+    namespace :v1 do
+      resources :users do
+        resources :posts, format: :json do
+          resources :comments, format: :json
+        end
+      end
+    end
+  end
+
 end
+
+
