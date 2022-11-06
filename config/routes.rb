@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   devise_for :users
   root "users#index"
   resources :users, only: [:index, :show] do
@@ -15,6 +16,14 @@ Rails.application.routes.draw do
         resources :posts, format: :json do
           resources :comments, format: :json
         end
+      end
+    end
+  end
+
+  scope :api do
+    scope :v1 do
+      use_doorkeeper do
+        skip_controllers :authorizations, :applications, :authorized_applications
       end
     end
   end
